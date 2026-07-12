@@ -1,111 +1,124 @@
 <div align="center">
 
-<img src="logo.png" width="300" alt="KalaSutra AI Logo" />
+<img src="logo.png" width="280" alt="KalaSutra AI Logo" />
 
-# 🎨 KalaSutra AI
+# KalaSutra AI
 
-### *"Turning equations into understanding, not just art."*
+### *Kala (कला) = Art &nbsp;·&nbsp; Sutra (सूत्र) = Formula*
 
-**An AI-powered educational platform that transforms mathematical equations into animated Indian cultural geometry - with a built-in multilingual AI Teacher.**
+**An AI-powered educational platform that transforms mathematical equations into animated Indian cultural geometry — with a built-in multilingual AI Teacher powered by Gemma.**
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://typescriptlang.org)
-[![Gemma](https://img.shields.io/badge/Gemma_4_26B_MoE-Google_AI-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev/gemma)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+<br />
+
+[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![React](https://img.shields.io/badge/React_19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
+[![Gemma](https://img.shields.io/badge/Gemma_4_26B_MoE-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/gemma)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+<br />
 
 [🚀 Live Demo](#) &nbsp;·&nbsp; [📓 Kaggle Writeup](#) &nbsp;·&nbsp; [🎬 Demo Video](#)
 
 </div>
 
+<br />
+
+> **"280 million Indian students study in regional languages — yet almost every math visualisation tool speaks only English and uses only Western metaphors. KalaSutra AI changes that."**
+
 ---
 
-## 📌 Table of Contents
+<details>
+<summary><b>📌 Table of Contents</b> (click to expand)</summary>
 
-- [Overview](#-overview)
-- [Sample Equations to Try](#-sample-equations-to-try)
-- [The Problem](#-the-problem)
-- [Features](#-features)
-- [Architecture](#-architecture)
+- [The Problem We Solve](#-the-problem-we-solve)
+- [Our Solution](#-our-solution)
+- [Key Features](#-key-features)
+- [Quick Start — Try It Now](#-quick-start--try-it-now)
+- [System Architecture](#-system-architecture)
+- [How Gemma Powers KalaSutra](#-how-gemma-powers-kalasutra)
+- [Why We Chose Gemma 4 26B MoE](#-why-we-chose-gemma-4-26b-moe)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
-- [Local Setup](#-local-setup)
+- [Local Development Setup](#-local-development-setup)
 - [API Reference](#-api-reference)
-- [How Gemma Powers KalaSutra](#-how-gemma-powers-kalasutra)
-- [Why Gemma 4 26B MoE?](#-why-gemma-4-26b-moe)
 - [Supported Languages](#-supported-languages)
 - [Contributing](#-contributing)
 - [License](#-license)
 
----
-
-## 🔭 Overview
-
-**KalaSutra AI** (from Sanskrit: *Kala* = Art, *Sutra* = Formula) is an interactive AI-powered learning platform that bridges abstract mathematics and India's rich geometric art traditions. Students type any mathematical equation, and the system responds with:
-
-- An **animated SVG artwork** rendered as Rangoli, Mandala, Kolam, or Alpana
-- A structured **AI Teacher explanation** of the underlying math — in 5 Indian languages
-- Auto-generated **quiz questions** to reinforce understanding
-- A **real-life connection** that contextualizes the concept
-
-> Built for the **Google — Build with Gemma Kaggle Competition**.
+</details>
 
 ---
 
-## 🧪 Sample Equations to Try
+## 🎯 The Problem We Solve
 
-Want to test it out quickly? Copy and paste these into the **KalaSutra Canvas** (Equation Editor):
+Mathematics is the single most failed subject across Indian board exams. Three systemic gaps make it worse:
 
-| Equation | Expected Geometry / Pattern | Best Theme |
-|---|---|---|
-| `r = sin(8*theta)` | 8-petal Polar Rose (Classic 8-fold symmetry) | Rangoli |
-| `r = cos(12*theta)` | 12-petal Polar Rose (Complex circular pattern) | Mandala |
-| `r = theta` | Archimedean Spiral (Expanding spiral shape) | Kolam |
-| `r = 1 + sin(theta)` | Cardioid (Heart-shaped curve) | Alpana |
-| `r = sin(theta) * cos(theta)` | 4-petal flower shape | Rangoli |
-
-*Pro-tip: Try changing the coefficient of `theta` (e.g., change `8` to `6` in `sin(8*theta)`) to see how the symmetry changes!*
-
----
-
-## 🎯 The Problem
-
-Mathematics is one of the most challenging subjects for students because most concepts remain abstract and inaccessible:
-
-- **Static textbooks** fail to show how changing a parameter (e.g., `sin(4θ)` → `sin(8θ)`) changes the resulting geometry.
-- **Language barriers** leave millions of regional-language students without quality visual math resources.
-- **Cultural disconnect** — most global EdTech uses Western visual metaphors unfamiliar to Indian students.
-
-KalaSutra AI addresses all three by making math **visual**, **interactive**, and **culturally familiar**.
-
-### Target Users
-
-| Segment | Description |
+| Gap | Impact |
 |---|---|
-| **Primary** | Class 9–12 students, JEE / NEET aspirants, Engineering undergraduates |
-| **Secondary** | Mathematics teachers, Coaching institutes, Parents |
+| **🔇 Abstraction** | Static textbooks cannot show how changing `sin(4θ)` → `sin(8θ)` transforms the geometry. Students memorise formulas without understanding shapes. |
+| **🌐 Language Barrier** | 280M+ students study in Hindi, Bengali, Tamil, or Telugu — yet quality visual math resources exist almost exclusively in English. |
+| **🎭 Cultural Disconnect** | Global EdTech defaults to Western visual metaphors. Indian students don't see their own cultural geometry (Rangoli, Kolam, Mandala) reflected in math education. |
+
+### Who Is This For?
+
+| Segment | Users |
+|---|---|
+| **Primary** | Class 9–12 students · JEE / NEET aspirants · Engineering undergraduates |
+| **Secondary** | Mathematics teachers · Coaching institutes · Parents |
 
 ---
 
-## ⭐ Features
+## 💡 Our Solution
 
-| # | Feature | Description |
+KalaSutra AI is a **full-stack educational tool** that turns any mathematical equation into an interactive learning experience rooted in Indian culture.
+
+A student types an equation. The system responds with:
+
+```
+Equation  →  Animated Cultural Artwork  +  AI Teacher Explanation  +  Quiz  +  Real-Life Connection
+                (Rangoli / Mandala /         (in their own             (2 auto-generated    (contextualised
+                 Kolam / Alpana)              language)                 questions)           analogy)
+```
+
+> **This is not a chatbot. This is not "Chat with PDF". This is a purpose-built learning loop — equation → visualisation → explanation → assessment — in one seamless interface.**
+
+---
+
+## ⭐ Key Features
+
+| | Feature | What It Does |
 |---|---|---|
-| 1 | **Equation Interpreter** | Parses polar, parametric, and algebraic equations and extracts mathematical properties |
-| 2 | **AI Teacher Panel** | Gemini explains *why* the shape looks the way it does in the student's own language |
-| 3 | **Cultural Geometry Generator** | Renders equations as Rangoli, Mandala, Kolam, or Alpana artwork |
-| 4 | **Parameter Playground** | Change any parameter and instantly see how symmetry evolves |
-| 5 | **Animated SVG Canvas** | Framer Motion sequentially draws each geometric layer for a compelling visual effect |
-| 6 | **Concept & Symmetry Extraction** | Auto-detects symmetry type (e.g., "8-fold") and difficulty level |
-| 7 | **Real-Life Connections** | Contextualizes math — satellite dishes, manhole covers, clock gears |
-| 8 | **AI Quiz Generator** | Generates 2 targeted MCQ / short-answer questions per equation |
-| 9 | **Multilingual Support** | English, Hindi, Bengali, Tamil, Telugu |
-| 10 | **SVG Export** | Download the generated artwork as a scalable vector SVG file |
+| 🧮 | **Equation Interpreter** | SymPy-powered parser handles polar, parametric, and algebraic equations. Extracts variables, functions, and symmetry order automatically. |
+| 🎨 | **Cultural Geometry Generator** | Renders equations as **Rangoli**, **Mandala**, **Kolam**, or **Alpana** artwork — culturally familiar Indian geometric art forms. |
+| 🎬 | **Animated SVG Canvas** | Framer Motion draws each geometric layer sequentially — circles, petals, dots, spirals, polygons — creating a compelling visual reveal. |
+| 🧠 | **AI Teacher Panel** | Gemma explains *why* the shape looks the way it does, in the student's own language. Concise (≤40 words), pedagogically targeted. |
+| 🌍 | **5 Indian Languages** | English · Hindi (हिंदी) · Bengali (বাংলা) · Tamil (தமிழ்) · Telugu (తెలుగు) |
+| 📝 | **AI Quiz Generator** | 2 auto-generated questions per equation (MCQ + short answer) to reinforce understanding immediately. |
+| 🔗 | **Real-Life Connections** | Contextualises every concept — satellite dishes, clock gears, manhole covers — so math feels tangible. |
+| 🔄 | **Parameter Playground** | Change any coefficient and instantly see how symmetry, petal count, and geometry evolve. |
+| 📥 | **SVG Export** | Download the generated artwork as a production-quality scalable vector file. |
 
 ---
 
-## 🏗 Architecture
+## 🧪 Quick Start — Try It Now
+
+Once the app is running, paste any of these equations into the **KalaSutra Canvas**:
+
+| Equation | What You'll See | Recommended Theme |
+|---|---|---|
+| `r = sin(8*theta)` | 🌸 8-petal Polar Rose with 8-fold symmetry | Rangoli |
+| `r = cos(12*theta)` | 🌺 12-petal Rose — intricate circular pattern | Mandala |
+| `r = theta` | 🌀 Archimedean Spiral — expanding outward | Kolam |
+| `r = 1 + sin(theta)` | 💗 Cardioid — heart-shaped curve | Alpana |
+| `r = sin(theta) * cos(theta)` | 🌼 4-petal flower | Rangoli |
+
+> **💡 Pro-tip:** Change the coefficient of `theta` (e.g., `8` → `6` in `sin(8*theta)`) to watch the symmetry transform in real time!
+
+---
+
+## 🏗 System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -133,17 +146,80 @@ KalaSutra AI addresses all three by making math **visual**, **interactive**, and
                                 ▼
                   ┌─────────────────────────────┐
                   │  Gemma 4 26B (MoE)           │
+                  │  gemma-4-26b-a4b-it          │
                   │  (structured JSON output)    │
                   └─────────────────────────────┘
 ```
 
 ### Request Flow
 
-1. **Input** — User enters an equation (e.g., `r = sin(8θ)`), selects a theme and language.
-2. **Parse** — The backend equation parser (SymPy) extracts type, variables, functions, and symmetry order.
-3. **Reason** — The parsed data is sent to **Gemma 4 26B (MoE)** with a strict Pydantic schema enforcing structured JSON output.
-4. **Respond** — Gemma returns a `GemmaTeachingResponse` containing the concept, explanation, quiz, and geometry rendering instructions.
-5. **Render** — The React frontend populates the AI Teacher panel and animates the SVG canvas layer by layer.
+| Step | Phase | What Happens |
+|---|---|---|
+| **1** | **Input** | User enters an equation (e.g., `r = sin(8θ)`), selects a cultural theme and language. |
+| **2** | **Parse** | The backend's SymPy-based parser extracts equation type, free variables, trig functions, and symmetry order. |
+| **3** | **Reason** | Parsed data is sent to **Gemma 4 26B (MoE)** with a strict Pydantic schema enforcing structured JSON output. |
+| **4** | **Respond** | Gemma returns a `GemmaTeachingResponse` — concept, explanation, quiz, real-life connection, and rendering instructions. |
+| **5** | **Render** | React frontend populates the AI Teacher panel and animates the SVG canvas layer by layer using Framer Motion. |
+
+---
+
+## 🧠 How Gemma Powers KalaSutra
+
+**Gemma is not a wrapper.** It is the reasoning core of the entire application, performing **5 distinct roles in a single structured inference call:**
+
+```
+                    ┌─────────────────────────────────┐
+                    │     SINGLE GEMMA INFERENCE CALL  │
+                    │                                   │
+                    │   ┌─── Mathematician ──────┐     │
+                    │   │   equation type,        │     │
+                    │   │   symmetry, difficulty   │     │
+                    │   └─────────────────────────┘     │
+                    │   ┌─── Multilingual Teacher ┐     │
+                    │   │   explanation in chosen  │     │
+Parsed   ─────────►│   │   language (≤40 words)   │─────────► GemmaTeachingResponse
+Equation            │   └─────────────────────────┘     │        (Pydantic-validated JSON)
+                    │   ┌─── Storyteller ──────────┐    │
+                    │   │   real-life analogy       │    │
+                    │   └──────────────────────────┘    │
+                    │   ┌─── Quiz Creator ─────────┐    │
+                    │   │   2 targeted questions    │    │
+                    │   └──────────────────────────┘    │
+                    │   ┌─── Geometry Architect ────┐   │
+                    │   │   rendering layers for    │   │
+                    │   │   SVG canvas animation    │   │
+                    │   └──────────────────────────┘   │
+                    └─────────────────────────────────┘
+```
+
+We enforce **deterministic structured output** using `response_mime_type="application/json"` with a strict `response_schema=GemmaTeachingResponse` Pydantic model. This means every response is machine-parseable and UI-ready — no regex extraction, no post-processing hacks.
+
+> **Key insight:** This architecture cleanly separates **reasoning** (Gemma) from **rendering** (React/SVG), keeping the system modular, testable, and language-agnostic.
+
+---
+
+## 🎯 Why We Chose Gemma 4 26B MoE
+
+We evaluated every available Gemma variant. Here's why `gemma-4-26b-a4b-it` won:
+
+| Factor | Why This Variant Fits |
+|---|---|
+| **Structured JSON Output** | Supports `response_schema` via the Google GenAI SDK — critical for our multi-role output (explanation + quiz + rendering) in a single deterministic call. |
+| **Multilingual Strength** | Strong performance across Hindi, Bengali, Tamil, and Telugu — serving our target audience of **280M+ regional-language students**. |
+| **MoE Efficiency** | Activates only **4B of 26B parameters per token** — fast inference ideal for an interactive tool where students expect real-time feedback. |
+| **Math Reasoning** | Sufficient depth to analyse polar/parametric equations, extract symmetry properties, and generate pedagogically accurate explanations. |
+| **Instruction-Tuned** | The `-it` variant reliably follows complex multi-constraint prompts (e.g., "explain in ≤40 words in Tamil while also producing geometry layer instructions"). |
+
+<details>
+<summary><b>Why Not Other Variants?</b> (click to expand)</summary>
+
+| Variant | Reason for Rejection |
+|---|---|
+| **Gemma 2B / 4B** | Insufficient reasoning depth for math concept extraction + quiz generation + geometry instructions in a single structured call. |
+| **Gemma 27B Dense** | Higher latency per token vs. the 26B MoE variant, with no significant quality gain for our structured-output use case. |
+| **Gemma 31B Dense** | Overkill — the MoE variant offers a better latency/quality tradeoff for interactive educational applications. |
+
+</details>
 
 ---
 
@@ -154,20 +230,19 @@ KalaSutra AI addresses all three by making math **visual**, **interactive**, and
 | Technology | Version | Role |
 |---|---|---|
 | **Python** | 3.9+ | Core language |
-| **FastAPI** | Latest | REST API framework |
-| **Pydantic** | v2 | Request / response validation & structured output schema |
-| **google-genai** | Latest | Official Google AI Python SDK |
-| **Gemma 4 26B (MoE)** | `gemma-4-26b-a4b-it` | Primary LLM inference engine (Mixture-of-Experts) |
-| **SymPy** | 1.13+ | Symbolic math parsing and equation analysis |
-| **python-dotenv** | — | Environment variable management |
-| **Uvicorn** | — | ASGI server |
+| **FastAPI** | Latest | REST API framework with auto-generated OpenAPI docs |
+| **Pydantic** | v2 | Request / response validation & structured output schema for Gemma |
+| **google-genai** | Latest | Official Google GenAI Python SDK |
+| **Gemma 4 26B (MoE)** | `gemma-4-26b-a4b-it` | Primary LLM inference engine |
+| **SymPy** | 1.13+ | Symbolic math parsing & equation analysis |
+| **Uvicorn** | Latest | ASGI server |
 
 ### Frontend
 
 | Technology | Version | Role |
 |---|---|---|
 | **React** | 19 | UI framework |
-| **TypeScript** | 6.0 | Type safety |
+| **TypeScript** | 6.0 | Type safety across all components |
 | **Vite** | 8 | Build tooling & dev server |
 | **TailwindCSS** | 3.4 | Utility-first styling |
 | **Framer Motion** | 12 | SVG path draw animations |
@@ -180,105 +255,94 @@ KalaSutra AI addresses all three by making math **visual**, **interactive**, and
 
 ```
 KalaSutra AI/
-├── README.md
+├── README.md                      # This file
+├── LICENSE                        # MIT License
+├── CODE_OF_CONDUCT.md             # Contributor Covenant v2.1
+├── CONTRIBUTING.md                # Contribution guidelines
+├── SECURITY.md                    # Security policy
+├── logo.png                       # Project logo
 │
 ├── backend/
-│   ├── .env                        # Environment variables (GEMINI_API_KEY)
+│   ├── README.md                  # Backend-specific documentation
+│   ├── requirements.txt           # Python dependencies
+│   ├── .env                       # API key (not committed)
 │   └── app/
-│       ├── main.py                 # FastAPI app entry point + CORS setup
+│       ├── main.py                # FastAPI entry point + CORS
 │       ├── api/
-│       │   └── generate.py         # POST /api/generate endpoint
+│       │   └── generate.py        # POST /api/generate endpoint
 │       ├── gemma/
-│       │   └── engine.py           # Gemini API call & prompt engineering
+│       │   └── engine.py          # Gemma inference + prompt engineering
 │       ├── parser/
-│       │   └── equation.py         # Equation parsing logic
+│       │   └── equation.py        # SymPy equation parser
 │       └── schemas/
-│           └── models.py           # Pydantic models (request / response schemas)
+│           └── models.py          # Pydantic models (request / response)
 │
 └── frontend/
-    ├── index.html
-    ├── package.json
+    ├── README.md                  # Frontend-specific documentation
+    ├── index.html                 # HTML entry point + SEO meta tags
+    ├── package.json               # Node.js dependencies
     └── src/
-        ├── App.tsx                 # Root component, state, API calls
-        ├── types/                  # TypeScript type definitions
+        ├── App.tsx                # Root component — layout, state, API calls
+        ├── main.tsx               # Vite entry point
+        ├── index.css              # Tailwind base + Inter font
+        ├── types/
+        │   └── index.ts           # Shared TypeScript type definitions
         └── components/
             ├── EquationEditor.tsx  # Left pane — equation input form
             ├── Preview.tsx         # Center pane — animated SVG canvas
-            └── AITeacherPanel.tsx  # Right pane — explanations, quiz, symmetry
+            └── AITeacherPanel.tsx  # Right pane — AI Teacher, quiz, symmetry
 ```
 
 ---
 
-## 💻 Local Setup
+## 💻 Local Development Setup
 
 ### Prerequisites
 
-- **Python** 3.9 or higher
-- **Node.js** 18 or higher
-- A **Gemini API Key** → [Get one free at Google AI Studio](https://aistudio.google.com/app/apikey)
-
----
+| Requirement | Version |
+|---|---|
+| Python | 3.9+ |
+| Node.js | 18+ |
+| Gemma API Key | [Get one free →](https://aistudio.google.com/app/apikey) |
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/kalasutra-ai.git
-cd kalasutra-ai
+git clone https://github.com/dasouvik122005/KalaSutra-AI.git
+cd KalaSutra-AI
 ```
 
----
-
-### 2. Backend Setup
+### 2. Backend
 
 ```bash
 cd backend
-```
 
-Create and activate a virtual environment:
-
-```bash
-# Create venv
+# Create and activate virtual environment
 python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # macOS / Linux
 
-# Activate — Windows
-venv\Scripts\activate
-
-# Activate — Mac / Linux
-source venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-Create a `.env` file in the `backend/` directory:
+# Configure API key
+echo GEMINI_API_KEY=your_key_here > .env
 
-```env
-GEMINI_API_KEY=your_gemini_api_key_here
-```
-
-> ⚠️ **Never commit your `.env` file.** It is already listed in `.gitignore`.
-
-Start the development server:
-
-```bash
+# Start the server
 uvicorn app.main:app --reload
 ```
+
+> ⚠️ **Never commit your `.env` file.** It is already in `.gitignore`.
 
 | Service | URL |
 |---|---|
 | REST API | `http://localhost:8000` |
-| Swagger UI (interactive docs) | `http://localhost:8000/docs` |
+| Swagger UI | `http://localhost:8000/docs` |
 
----
-
-### 3. Frontend Setup
-
-Open a **new terminal**, then:
+### 3. Frontend
 
 ```bash
+# Open a new terminal
 cd frontend
 npm install
 npm run dev
@@ -292,9 +356,9 @@ The application will be available at **`http://localhost:5173`**
 
 ### `POST /api/generate`
 
-Generates teaching materials and rendering instructions for a given mathematical equation.
+Generates teaching materials and rendering instructions for a given equation.
 
-**Request Body**
+**Request**
 
 ```json
 {
@@ -308,11 +372,12 @@ Generates teaching materials and rendering instructions for a given mathematical
 | Field | Type | Required | Options | Default |
 |---|---|---|---|---|
 | `equation` | `string` | ✅ | Any math expression | — |
-| `theme` | `string` | ✅ | `rangoli`, `mandala`, `kolam`, `alpana` | — |
-| `complexity` | `string` | ❌ | `low`, `medium`, `high` | `medium` |
-| `language` | `string` | ❌ | See [Supported Languages](#-supported-languages) | `English` |
+| `theme` | `string` | ✅ | `rangoli` · `mandala` · `kolam` · `alpana` | — |
+| `complexity` | `string` | ❌ | `low` · `medium` · `high` | `medium` |
+| `language` | `string` | ❌ | `English` · `Hindi` · `Bengali` · `Tamil` · `Telugu` | `English` |
 
-**Response Body (200 OK)**
+<details>
+<summary><b>Response Body (200 OK)</b> — click to expand</summary>
 
 ```json
 {
@@ -349,57 +414,13 @@ Generates teaching materials and rendering instructions for a given mathematical
 }
 ```
 
----
+</details>
 
 ### `GET /health`
-
-Returns server health status.
 
 ```json
 { "status": "ok" }
 ```
-
----
-
-## 🧠 How Gemma Powers KalaSutra
-
-**Gemma 4 26B (MoE)** (`gemma-4-26b-a4b-it`) is not merely generating SVG strings — it is the **reasoning core** of the entire application.
-
-We use **Structured JSON Output** with a strict Pydantic schema (`GemmaTeachingResponse`) to enforce deterministic, parseable responses on every call.
-
-Gemma simultaneously fulfils five roles:
-
-| Role | What Gemma Does |
-|---|---|
-| **Mathematician** | Identifies equation type, symmetry order, and difficulty level |
-| **Multilingual Teacher** | Explains the math in the student's chosen language (up to 40 words, clear and targeted) |
-| **Storyteller** | Generates a real-life analogy to make the concept instantly relatable |
-| **Quiz Creator** | Produces relevant MCQ and short-answer questions from the concept |
-| **Geometry Architect** | Outputs abstract rendering instructions (layers of shapes) for the React canvas to animate |
-
-This design separates **reasoning** (Gemma) from **rendering** (React/SVG), keeping the system modular, testable, and language-agnostic.
-
----
-
-## 🎯 Why Gemma 4 26B MoE?
-
-We evaluated multiple Gemma variants and chose **Gemma 4 26B (MoE)** (`gemma-4-26b-a4b-it`) for the following reasons:
-
-| Factor | Why Gemma 4 26B MoE Fits |
-|---|---|
-| **Structured JSON Output** | Supports `response_schema` via the Google GenAI SDK, enabling deterministic Pydantic-validated responses — critical for our multi-role output (explanation + quiz + rendering instructions in a single call). |
-| **Multilingual Strength** | Strong performance across Hindi, Bengali, Tamil, and Telugu — essential for our target audience of 280M+ regional-language students in India. |
-| **MoE Efficiency** | The Mixture-of-Experts architecture activates only 4B of 26B parameters per token, delivering fast inference suitable for an interactive educational tool where students expect real-time feedback. |
-| **Math Reasoning** | Sufficient reasoning capability to analyse polar/parametric equations, extract symmetry properties, and generate pedagogically accurate explanations and quiz questions. |
-| **Instruction-Tuned** | The `-it` variant follows complex multi-constraint prompts reliably (e.g., "explain in ≤40 words in Tamil while also producing geometry layer instructions"). |
-
-### Why Not Other Variants?
-
-| Variant | Reason for Not Choosing |
-|---|---|
-| Gemma 2B/4B | Insufficient reasoning depth for math concept extraction + quiz generation + geometry instructions in a single structured call. |
-| Gemma 27B Dense | Higher latency per token vs. the 26B MoE variant, with no significant quality gain for our structured-output use case. |
-| Gemma 31B Dense | Overkill for this use case; the MoE variant offers better latency/quality tradeoff for interactive educational applications. |
 
 ---
 
@@ -417,15 +438,13 @@ We evaluated multiple Gemma variants and chose **Gemma 4 26B (MoE)** (`gemma-4-2
 
 ## 🤝 Contributing
 
-Contributions are welcome and appreciated! Please follow these steps:
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before getting started.
 
 1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/your-feature-name`
+2. **Create** a feature branch: `git checkout -b feature/your-feature`
 3. **Commit** your changes: `git commit -m 'feat: add your feature'`
-4. **Push** to your branch: `git push origin feature/your-feature-name`
-5. **Open** a Pull Request with a clear description of your changes
-
-Please ensure your code is properly formatted and any new API behaviour is reflected in this README before submitting.
+4. **Push** to your branch: `git push origin feature/your-feature`
+5. **Open** a Pull Request
 
 ---
 
@@ -437,8 +456,14 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 <div align="center">
 
-Made with ❤️ for the **Google — Build with Gemma Kaggle Competition**
+<br />
+
+**Built with ❤️ for the [Google — Build with Gemma](https://www.kaggle.com/competitions/build-with-gemma) Kaggle Competition**
 
 *Powered by Gemma 4 26B (MoE) — Bridging Mathematics and Culture, one equation at a time.*
+
+<br />
+
+[![Made with Gemma](https://img.shields.io/badge/Made_with-Gemma-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/gemma)
 
 </div>
