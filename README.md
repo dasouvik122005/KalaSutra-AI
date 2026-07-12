@@ -120,35 +120,38 @@ Once the app is running, paste any of these equations into the **KalaSutra Canva
 
 ## 🏗 System Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        USER BROWSER                             │
-│                                                                 │
-│  ┌──────────────┐   ┌──────────────────┐   ┌───────────────┐  │
-│  │  Equation    │   │  Animated SVG    │   │  AI Teacher   │  │
-│  │  Editor      │   │  Canvas          │   │  Panel        │  │
-│  │  (Left Pane) │   │  (Center Pane)   │   │  (Right Pane) │  │
-│  └──────┬───────┘   └────────▲─────────┘   └───────▲───────┘  │
-│         │                    │                       │          │
-│         └────────────────────┴───────────────────────┘         │
-│                    React 19 + Vite + TailwindCSS                │
-└───────────────────────────────┬─────────────────────────────────┘
-                                │  HTTP POST /api/generate
-                                ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                       FASTAPI BACKEND                           │
-│                                                                 │
-│   ① Equation Parser   →   ② Gemma Engine    →   ③ Response    │
-│      (SymPy / Regex)        (Structured JSON)      (Pydantic)  │
-└─────────────────────────────────────────────────────────────────┘
-                                │
-                                │  google-genai SDK
-                                ▼
-                  ┌─────────────────────────────┐
-                  │  Gemma 4 26B (MoE)           │
-                  │  gemma-4-26b-a4b-it          │
-                  │  (structured JSON output)    │
-                  └─────────────────────────────┘
+```mermaid
+graph TD
+    subgraph Browser ["🌐 React 19 Frontend (Vite + Tailwind)"]
+        direction LR
+        A["📝 Equation Editor<br/>(Left Pane)"]
+        B["🎨 SVG Canvas<br/>(Center Pane)"]
+        C["👨‍🏫 AI Teacher<br/>(Right Pane)"]
+    end
+
+    subgraph Backend ["⚡ FastAPI Backend"]
+        direction LR
+        D["1️⃣ Equation Parser<br/>(SymPy)"]
+        E["2️⃣ Gemma Engine<br/>(google-genai)"]
+        F["3️⃣ Response Validator<br/>(Pydantic)"]
+    end
+    
+    G[("🧠 Gemma 4 26B (MoE)<br/>(gemma-4-26b-a4b-it)")]
+
+    A -- "HTTP POST<br/>/api/generate" --> D
+    D -- "Parsed properties" --> E
+    E -- "Prompt + Schema" --> G
+    G -- "Structured JSON" --> F
+    F -- "Response" --> B
+    F -- "Response" --> C
+    
+    classDef frontend fill:#eef2ff,stroke:#6366f1,stroke-width:2px,color:#1e1b4b
+    classDef backend fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,color:#14532d
+    classDef model fill:#eff6ff,stroke:#3b82f6,stroke-width:3px,color:#1e3a8a
+    
+    class A,B,C frontend
+    class D,E,F backend
+    class G model
 ```
 
 ### Request Flow
@@ -167,29 +170,31 @@ Once the app is running, paste any of these equations into the **KalaSutra Canva
 
 **Gemma is not a wrapper.** It is the reasoning core of the entire application, performing **5 distinct roles in a single structured inference call:**
 
-```
-                    ┌─────────────────────────────────┐
-                    │     SINGLE GEMMA INFERENCE CALL  │
-                    │                                   │
-                    │   ┌─── Mathematician ──────┐     │
-                    │   │   equation type,        │     │
-                    │   │   symmetry, difficulty   │     │
-                    │   └─────────────────────────┘     │
-                    │   ┌─── Multilingual Teacher ┐     │
-                    │   │   explanation in chosen  │     │
-Parsed   ─────────►│   │   language (≤40 words)   │─────────► GemmaTeachingResponse
-Equation            │   └─────────────────────────┘     │        (Pydantic-validated JSON)
-                    │   ┌─── Storyteller ──────────┐    │
-                    │   │   real-life analogy       │    │
-                    │   └──────────────────────────┘    │
-                    │   ┌─── Quiz Creator ─────────┐    │
-                    │   │   2 targeted questions    │    │
-                    │   └──────────────────────────┘    │
-                    │   ┌─── Geometry Architect ────┐   │
-                    │   │   rendering layers for    │   │
-                    │   │   SVG canvas animation    │   │
-                    │   └──────────────────────────┘   │
-                    └─────────────────────────────────┘
+```mermaid
+flowchart LR
+    A["📐 Parsed<br/>Equation"] --> B{"🧠 Gemma 4 26B<br/>(Single Inference Call)"}
+    
+    B --> C["👨‍🔬 Mathematician<br/>(Type, Symmetry)"]
+    B --> D["🗣️ Teacher<br/>(Multilingual Explanation)"]
+    B --> E["📖 Storyteller<br/>(Real-life Analogy)"]
+    B --> F["📝 Quiz Creator<br/>(2 Targeted Questions)"]
+    B --> G["🎨 Geometry Architect<br/>(SVG Layers)"]
+    
+    C --> H["📦 GemmaTeachingResponse<br/>(Pydantic-Validated JSON)"]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+
+    classDef input fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,color:#111827
+    classDef model fill:#eff6ff,stroke:#3b82f6,stroke-width:3px,color:#1e3a8a
+    classDef roles fill:#fdf4ff,stroke:#d946ef,stroke-width:2px,color:#701a75
+    classDef output fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,color:#14532d
+
+    class A input
+    class B model
+    class C,D,E,F,G roles
+    class H output
 ```
 
 We enforce **deterministic structured output** using `response_mime_type="application/json"` with a strict `response_schema=GemmaTeachingResponse` Pydantic model. This means every response is machine-parseable and UI-ready — no regex extraction, no post-processing hacks.
