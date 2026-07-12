@@ -15,7 +15,7 @@ function App() {
     setError(null);
     try {
       // In development, assume backend runs on localhost:8000
-      const res = await axios.post<GenerateResponse>('https://kalasutra-backend.onrender.com/api/generate', {
+      const res = await axios.post<GenerateResponse>('http://localhost:8000/api/generate', {
         equation,
         theme,
         complexity,
