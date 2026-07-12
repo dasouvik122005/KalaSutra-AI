@@ -1,0 +1,46 @@
+# Node / Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Python / Backend
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/
+python-eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Sensitive data
+.env
+*.env
+
+# OS / Editor files
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.sln
+*.swp
+*.tmp
+*.log
