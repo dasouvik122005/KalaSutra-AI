@@ -19,7 +19,7 @@
 
 <br />
 
-[🚀 Live Demo](#) &nbsp;·&nbsp; [📓 Kaggle Writeup](#) &nbsp;·&nbsp; [🎬 Demo Video](#)
+[📓 Kaggle Writeup](https://www.kaggle.com/competitions/gemma-for-bharat-gd-go-c-jis-university-2026/writeups/kalasutra-ai) &nbsp;·&nbsp; [🎬 Demo Video](https://youtu.be/MrhGDKtzK6g?si=j6GcDj0ORcL3CaGs)
 
 </div>
 
