@@ -4,7 +4,7 @@
 
 ### *"Turning equations into understanding, not just art."*
 
-**An AI-powered educational platform that transforms mathematical equations into animated Indian cultural geometry — with a built-in multilingual AI Teacher.**
+**An AI-powered educational platform that transforms mathematical equations into animated Indian cultural geometry - with a built-in multilingual AI Teacher.**
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
