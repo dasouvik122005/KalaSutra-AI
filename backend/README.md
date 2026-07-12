@@ -74,6 +74,7 @@ Create a `.env` file inside the `backend/` directory:
 
 ```env
 GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-3.5-flash
 ```
 
 > ⚠️ Never commit your `.env` file. It is already in `.gitignore`.
@@ -188,6 +189,7 @@ All Pydantic v2 models:
 |---|---|---|
 | `GEMINI_API_KEY` | ✅ | Your Google AI API key (used first if present) |
 | `GOOGLE_API_KEY` | Optional | Fallback if `GEMINI_API_KEY` is not set |
+| `GEMINI_MODEL` | Optional | Google GenAI model ID. Defaults to `gemini-3.5-flash` |
 
 ---
 

@@ -138,12 +138,12 @@ graph TD
     
     G[("🧠 Gemma 4 26B (MoE)<br/>(gemma-4-26b-a4b-it)")]
 
-    A -- "HTTP POST<br/>/api/generate" --> D
-    D -- "Parsed properties" --> E
-    E -- "Prompt + Schema" --> G
-    G -- "Structured JSON" --> F
-    F -- "Response" --> B
-    F -- "Response" --> C
+    A -->|"HTTP POST<br/>/api/generate"| D
+    D -->|"Parsed properties"| E
+    E -->|"Prompt + Schema"| G
+    G -->|"Structured JSON"| F
+    F -->|"Response"| B
+    F -->|"Response"| C
     
     classDef frontend fill:#eef2ff,stroke:#6366f1,stroke-width:2px,color:#1e1b4b
     classDef backend fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,color:#14532d
