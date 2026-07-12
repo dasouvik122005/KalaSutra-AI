@@ -34,9 +34,7 @@ function App() {
       <header className="bg-white border-b border-slate-200 sticky top-0 z-10 shrink-0">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
-              K
-            </div>
+            <img src="/logo.png" alt="KalaSutra AI Logo" className="h-10 w-auto object-contain" />
             <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-purple-700 tracking-tight">
               KalaSutra AI
             </h1>

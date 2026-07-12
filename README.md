@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="logo.png" width="300" alt="KalaSutra AI Logo" />
+
 # 🎨 KalaSutra AI
 
 ### *"Turning equations into understanding, not just art."*
