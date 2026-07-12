@@ -104,6 +104,32 @@ export function Preview({ geometry }: PreviewProps) {
           </g>
         );
       }
+      case 'spiral': {
+        const turns = shape.turns || 3;
+        const maxRadius = shape.max_radius || 200;
+        const steps = Math.ceil(turns * 60); // 60 points per turn for smoothness
+        let d = '';
+        for (let i = 0; i <= steps; i++) {
+          const t = i / steps;
+          const angle = t * turns * 2 * Math.PI;
+          const r = t * maxRadius;
+          const px = 500 + r * Math.cos(angle);
+          const py = 500 + r * Math.sin(angle);
+          d += (i === 0 ? 'M' : 'L') + `${px.toFixed(2)},${py.toFixed(2)} `;
+        }
+        return (
+          <motion.path
+            key={index}
+            d={d.trim()}
+            stroke={shape.stroke || 'black'}
+            strokeWidth={shape.stroke_width || 1}
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 1.2, delay: index * 0.3, ease: "easeInOut" as const }}
+          />
+        );
+      }
       default:
         return null;
     }

@@ -10,7 +10,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://typescriptlang.org)
-[![Gemini](https://img.shields.io/badge/Gemini_2.0_Flash_Lite-Google_AI-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev)
+[![Gemma](https://img.shields.io/badge/Gemma_4_26B_MoE-Google_AI-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev/gemma)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
 [🚀 Live Demo](#) &nbsp;·&nbsp; [📓 Kaggle Writeup](#) &nbsp;·&nbsp; [🎬 Demo Video](#)
@@ -22,6 +22,7 @@
 ## 📌 Table of Contents
 
 - [Overview](#-overview)
+- [Sample Equations to Try](#-sample-equations-to-try)
 - [The Problem](#-the-problem)
 - [Features](#-features)
 - [Architecture](#-architecture)
@@ -29,7 +30,8 @@
 - [Project Structure](#-project-structure)
 - [Local Setup](#-local-setup)
 - [API Reference](#-api-reference)
-- [How Gemini Powers KalaSutra](#-how-gemini-powers-kalasutra)
+- [How Gemma Powers KalaSutra](#-how-gemma-powers-kalasutra)
+- [Why Gemma 4 26B MoE?](#-why-gemma-4-26b-moe)
 - [Supported Languages](#-supported-languages)
 - [Contributing](#-contributing)
 - [License](#-license)
@@ -46,6 +48,22 @@
 - A **real-life connection** that contextualizes the concept
 
 > Built for the **Google — Build with Gemma Kaggle Competition**.
+
+---
+
+## 🧪 Sample Equations to Try
+
+Want to test it out quickly? Copy and paste these into the **KalaSutra Canvas** (Equation Editor):
+
+| Equation | Expected Geometry / Pattern | Best Theme |
+|---|---|---|
+| `r = sin(8*theta)` | 8-petal Polar Rose (Classic 8-fold symmetry) | Rangoli |
+| `r = cos(12*theta)` | 12-petal Polar Rose (Complex circular pattern) | Mandala |
+| `r = theta` | Archimedean Spiral (Expanding spiral shape) | Kolam |
+| `r = 1 + sin(theta)` | Cardioid (Heart-shaped curve) | Alpana |
+| `r = sin(theta) * cos(theta)` | 4-petal flower shape | Rangoli |
+
+*Pro-tip: Try changing the coefficient of `theta` (e.g., change `8` to `6` in `sin(8*theta)`) to see how the symmetry changes!*
 
 ---
 
@@ -105,14 +123,14 @@ KalaSutra AI addresses all three by making math **visual**, **interactive**, and
 ┌─────────────────────────────────────────────────────────────────┐
 │                       FASTAPI BACKEND                           │
 │                                                                 │
-│   ① Equation Parser   →   ② Gemini Engine   →   ③ Response    │
-│      (Regex / AST)          (Structured JSON)      (Pydantic)  │
+│   ① Equation Parser   →   ② Gemma Engine    →   ③ Response    │
+│      (SymPy / Regex)        (Structured JSON)      (Pydantic)  │
 └─────────────────────────────────────────────────────────────────┘
                                 │
                                 │  google-genai SDK
                                 ▼
                   ┌─────────────────────────────┐
-                  │  Gemini 2.0 Flash Lite       │
+                  │  Gemma 4 26B (MoE)           │
                   │  (structured JSON output)    │
                   └─────────────────────────────┘
 ```
@@ -120,9 +138,9 @@ KalaSutra AI addresses all three by making math **visual**, **interactive**, and
 ### Request Flow
 
 1. **Input** — User enters an equation (e.g., `r = sin(8θ)`), selects a theme and language.
-2. **Parse** — The backend equation parser extracts type, variables, functions, and symmetry order.
-3. **Reason** — The parsed data is sent to Gemini with a strict Pydantic schema enforcing structured JSON output.
-4. **Respond** — Gemini returns a `GemmaTeachingResponse` containing the concept, explanation, quiz, and geometry rendering instructions.
+2. **Parse** — The backend equation parser (SymPy) extracts type, variables, functions, and symmetry order.
+3. **Reason** — The parsed data is sent to **Gemma 4 26B (MoE)** with a strict Pydantic schema enforcing structured JSON output.
+4. **Respond** — Gemma returns a `GemmaTeachingResponse` containing the concept, explanation, quiz, and geometry rendering instructions.
 5. **Render** — The React frontend populates the AI Teacher panel and animates the SVG canvas layer by layer.
 
 ---
@@ -137,7 +155,8 @@ KalaSutra AI addresses all three by making math **visual**, **interactive**, and
 | **FastAPI** | Latest | REST API framework |
 | **Pydantic** | v2 | Request / response validation & structured output schema |
 | **google-genai** | Latest | Official Google AI Python SDK |
-| **Gemini 2.0 Flash Lite** | — | LLM reasoning engine (optimised for low latency) |
+| **Gemma 4 26B (MoE)** | `gemma-4-26b-a4b-it` | Primary LLM inference engine (Mixture-of-Experts) |
+| **SymPy** | 1.13+ | Symbolic math parsing and equation analysis |
 | **python-dotenv** | — | Environment variable management |
 | **Uvicorn** | — | ASGI server |
 
@@ -229,7 +248,7 @@ source venv/bin/activate
 Install dependencies:
 
 ```bash
-pip install fastapi uvicorn pydantic google-genai python-dotenv
+pip install -r requirements.txt
 ```
 
 Create a `.env` file in the `backend/` directory:
@@ -340,15 +359,15 @@ Returns server health status.
 
 ---
 
-## 🧠 How Gemini Powers KalaSutra
+## 🧠 How Gemma Powers KalaSutra
 
-Gemini (**Gemini 2.0 Flash Lite**) is not merely generating SVG strings — it is the **reasoning core** of the entire application.
+**Gemma 4 26B (MoE)** (`gemma-4-26b-a4b-it`) is not merely generating SVG strings — it is the **reasoning core** of the entire application.
 
 We use **Structured JSON Output** with a strict Pydantic schema (`GemmaTeachingResponse`) to enforce deterministic, parseable responses on every call.
 
-Gemini simultaneously fulfils five roles:
+Gemma simultaneously fulfils five roles:
 
-| Role | What Gemini Does |
+| Role | What Gemma Does |
 |---|---|
 | **Mathematician** | Identifies equation type, symmetry order, and difficulty level |
 | **Multilingual Teacher** | Explains the math in the student's chosen language (up to 40 words, clear and targeted) |
@@ -356,7 +375,29 @@ Gemini simultaneously fulfils five roles:
 | **Quiz Creator** | Produces relevant MCQ and short-answer questions from the concept |
 | **Geometry Architect** | Outputs abstract rendering instructions (layers of shapes) for the React canvas to animate |
 
-This design separates **reasoning** (Gemini) from **rendering** (React/SVG), keeping the system modular, testable, and language-agnostic.
+This design separates **reasoning** (Gemma) from **rendering** (React/SVG), keeping the system modular, testable, and language-agnostic.
+
+---
+
+## 🎯 Why Gemma 4 26B MoE?
+
+We evaluated multiple Gemma variants and chose **Gemma 4 26B (MoE)** (`gemma-4-26b-a4b-it`) for the following reasons:
+
+| Factor | Why Gemma 4 26B MoE Fits |
+|---|---|
+| **Structured JSON Output** | Supports `response_schema` via the Google GenAI SDK, enabling deterministic Pydantic-validated responses — critical for our multi-role output (explanation + quiz + rendering instructions in a single call). |
+| **Multilingual Strength** | Strong performance across Hindi, Bengali, Tamil, and Telugu — essential for our target audience of 280M+ regional-language students in India. |
+| **MoE Efficiency** | The Mixture-of-Experts architecture activates only 4B of 26B parameters per token, delivering fast inference suitable for an interactive educational tool where students expect real-time feedback. |
+| **Math Reasoning** | Sufficient reasoning capability to analyse polar/parametric equations, extract symmetry properties, and generate pedagogically accurate explanations and quiz questions. |
+| **Instruction-Tuned** | The `-it` variant follows complex multi-constraint prompts reliably (e.g., "explain in ≤40 words in Tamil while also producing geometry layer instructions"). |
+
+### Why Not Other Variants?
+
+| Variant | Reason for Not Choosing |
+|---|---|
+| Gemma 2B/4B | Insufficient reasoning depth for math concept extraction + quiz generation + geometry instructions in a single structured call. |
+| Gemma 27B Dense | Higher latency per token vs. the 26B MoE variant, with no significant quality gain for our structured-output use case. |
+| Gemma 31B Dense | Overkill for this use case; the MoE variant offers better latency/quality tradeoff for interactive educational applications. |
 
 ---
 
@@ -396,6 +437,6 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 Made with ❤️ for the **Google — Build with Gemma Kaggle Competition**
 
-*Bridging Mathematics and Culture, one equation at a time.*
+*Powered by Gemma 4 26B (MoE) — Bridging Mathematics and Culture, one equation at a time.*
 
 </div>

@@ -21,7 +21,7 @@ class CanvasOptions(BaseModel):
     background: str = Field("none", description="Background color")
 
 class ShapeBase(BaseModel):
-    type: Literal["circle", "petal", "dots", "line", "arc", "spiral", "polygon"]
+    type: Literal["circle", "petal", "dots", "spiral", "polygon"]
     stroke: Optional[str] = "black"
     stroke_width: Optional[float] = 1.0
     fill: Optional[str] = "none"
